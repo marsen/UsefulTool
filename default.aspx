@@ -13,7 +13,7 @@
     <ol>
         <li>RemotePost - <a href="Demo/RemotePost/default.aspx">LINK</a></li>
         <li>DataAccess - <a href="javascript:alert('你還沒作');">LINK</a></li>
-        <li>Encryption and Decryption - <a href="javascript:alert('你還沒作');">LINK</a></li>
+        <li>Encryption and Decryption - <a href="Demo/Security/default.aspx">LINK</a></li>
     </ol>
     </div>
     </form>
