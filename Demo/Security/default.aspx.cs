@@ -14,6 +14,8 @@ public partial class Demo_Security_default : System.Web.UI.Page
         tbDESIV.Text = Security.DES.StrIV;
         #endregion
 
+        tbAESKey.Text = Security.AES.StrKey;
+        tbAESIV.Text = Security.AES.StrIV;
     }
     protected void btnDESenCrypt_Click(object sender, EventArgs e)
     {
@@ -24,5 +26,20 @@ public partial class Demo_Security_default : System.Web.UI.Page
     {
         var inputString = tbDESenCrypt.Text;
         tbDESdeCrypt.Text = Security.DES.deCrypt(inputString);
+    }
+    protected void btnMD5enCrypt_Click(object sender, EventArgs e)
+    {
+        var inputString = tbMD5Input.Text;
+        tbMD5enCrypt.Text = Security.MD5.enCrypt(inputString);
+    }
+    protected void btnAESenCrypt_Click(object sender, EventArgs e)
+    {
+        var inputString = tbAESInput.Text;
+        tbAESenCrypt.Text = Security.AES.enCrypt(inputString);
+    }
+    protected void btnAESdeCrypt_Click(object sender, EventArgs e)
+    {
+        var inputString = tbAESenCrypt.Text;
+        tbAESdeCrypt.Text = Security.AES.deCrypt(inputString);
     }
 }
