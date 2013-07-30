@@ -180,6 +180,45 @@ public class DataAccess
         return result;
     }
 
+    /// <summary>
+    /// GetDataTableForSQL
+    /// </summary>
+    /// <param name="cnString">連線字串</param>
+    /// <param name="sqlString">SQL語法</param>
+    /// <returns>查詢結果</returns>
+    public static System.Data.DataTable GetDataTableForSQL(string cnString, string sqlString)
+    {
+        return GetDataTableForSQL(cnString, sqlString, "Table");
+    }
+
+    public static System.Data.DataTable GetDataTableForSQL(string cnString, string sqlString, string tableName)
+    {
+        SqlConnection conn = null;
+        DataTable result = new DataTable();
+
+        try
+        {
+            conn = new SqlConnection(cnString);
+            conn.Open();
+
+            var cm = new SqlCommand(sqlString, conn);
+            result.Load(cm.ExecuteReader());
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        finally
+        {
+            if (conn != null && conn.State != ConnectionState.Closed)
+            {
+                conn.Close();
+            }
+        }
+
+        return result;
+    }
+
     public static System.Data.DataTable GetDataTableForSQL(string cnString, string sqlString, SqlParameter[] _params)
     {
         SqlConnection conn = null;
@@ -241,37 +280,5 @@ public class DataAccess
         return result;
     }
 
-    public static System.Data.DataTable GetDataTableForSQL(string cnString, string sqlString, string tableName)
-    {
-        SqlConnection conn = null;
-        DataTable result = new DataTable();
-
-        try
-        {
-            conn = new SqlConnection(cnString);
-            conn.Open();
-
-            var cm = new SqlCommand(sqlString, conn);
-            result.Load(cm.ExecuteReader());
-        }
-        catch (Exception ex)
-        {
-            //TODO: catch exception
-        }
-        finally
-        {
-            if (conn != null && conn.State != ConnectionState.Closed)
-            {
-                conn.Close();
-            }
-        }
-
-        return result;
-    }
-
-    public static System.Data.DataTable GetDataTableForSQL(string cnString, string sqlString)
-    {
-        return GetDataTableForSQL(cnString, sqlString, "Table");
-    }
     #endregion
 }
