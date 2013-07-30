@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 
 public partial class Demo_DataAccess_default : System.Web.UI.Page
 {
+    //如果無法連接，請檢查DemoDataBase.mdf是否被其它程序鎖住，通常是sqlserver.exe;可以用unlocker來解鎖。
     protected string cnString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\DemoDataBase.mdf;Database=DemoDataBase;Integrated Security=True;User Instance=True";
 
     protected void Page_Load(object sender, EventArgs e)
