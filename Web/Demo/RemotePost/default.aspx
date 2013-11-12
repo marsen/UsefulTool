@@ -10,7 +10,12 @@
     <form id="form1" runat="server">
     <div>
     <span>This page show how to used the C-sharp Send a POST request to other Server</span><br />
-        <asp:Button ID="btnPost" runat="server" Text="RUN" onclick="btnPost_Click" />
+        <asp:Button ID="btnPost" runat="server" Text="Post" onclick="btnPost_Click" />
+        <br />
+        <asp:Button ID="btnPostWS" runat="server" Text="PostWS" 
+            onclick="btnPostWS_Click" />
+        <br />
+        <asp:Button ID="btnGet" runat="server" Text="Get" onclick="btnGet_Click"  />
     </div>
     </form>
 </body>

@@ -19,4 +19,20 @@ public partial class Demo_RemotePost_default : System.Web.UI.Page
         rp.Add("Content", "Hello world");
         rp.Post();
     }
+    protected void btnPostWS_Click(object sender, EventArgs e)
+    {
+        RemotePost rp = new RemotePost();
+        rp.Url = "http://dev.cmoney.tw/cm-service/CMoneyService.asmx/GetSubscriptionName";
+        rp.Add("memberPk", "7367");        
+        rp.Post();
+    }
+    protected void btnGet_Click(object sender, EventArgs e)
+    {
+
+        RemotePost rp = new RemotePost();
+        rp.Url = "http://dev.cmoney.tw/cm-service/CMoneyService.asmx/GetSubscriptionName";
+        rp.Add("memberPk", "7367");
+        rp.Get();
+        
+    }
 }

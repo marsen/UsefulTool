@@ -56,5 +56,50 @@ public class RemotePost
             System.Web.HttpContext.Current.Response.Write("</body></html>");
             System.Web.HttpContext.Current.Response.End();
         }
-        #endregion
+        
+        public void Get()
+        {
+            //網頁內容
+            string result = "";
+            
+            var server = HttpContext.Current.Server;
+            var sb = new System.Text.StringBuilder();
+            for (int i = 0; i < Inputs.Keys.Count; i++)
+            {
+                if (sb.Length > 0) { sb.Append("&"); }
+                sb.AppendFormat("{0}={1}",
+                    server.UrlEncode(Inputs.Keys[i]),
+                    server.UrlEncode(Inputs[Inputs.Keys[i]]));
+            }
+            var GetUrl = string.Empty;
+            if (Inputs.Keys.Count > 0)
+            {
+                GetUrl = String.Format("{0}?{1}",Url,sb.ToString());
+            }
+            else
+            {
+                GetUrl = String.Format("{0}",Url);
+            }
+            
+            try
+            {
+                System.Net.HttpWebRequest hwr =
+                    (System.Net.HttpWebRequest)System.Net.HttpWebRequest.Create(GetUrl);
+
+                System.Net.WebResponse wr = hwr.GetResponse();
+
+                System.IO.StreamReader myStreamReader =
+                    new System.IO.StreamReader(wr.GetResponseStream(), System.Text.Encoding.UTF8);
+
+                result = myStreamReader.ReadToEnd();
+
+            }
+            catch
+            {
+                result = "GET ERROR";
+            }
+            //return result;
+        }
+
+    #endregion
 }
