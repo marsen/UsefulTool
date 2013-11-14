@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Globalization;
+using System.Xml;
+using System.Xml.Serialization;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Xml.Linq;
+
 
 public partial class Demo_RemotePost_default : System.Web.UI.Page
 {
@@ -15,7 +17,7 @@ public partial class Demo_RemotePost_default : System.Web.UI.Page
     {
         RemotePost rp = new RemotePost();
         rp.Url = "catch-post.aspx";
-        rp.Add("DateTime", DateTime.Now.ToString());
+        rp.Add("DateTime", DateTime.Now.ToString(CultureInfo.InvariantCulture));
         rp.Add("Content", "Hello world");
         rp.Post();
     }
@@ -23,16 +25,19 @@ public partial class Demo_RemotePost_default : System.Web.UI.Page
     {
         RemotePost rp = new RemotePost();
         rp.Url = "http://dev.cmoney.tw/cm-service/CMoneyService.asmx/GetSubscriptionName";
-        rp.Add("memberPk", "7367");        
-        rp.Post();
+        rp.Add("memberPk", "7367");
+        var s = rp.GetResponsePost();
+        TextBox1.Text = s;
     }
     protected void btnGet_Click(object sender, EventArgs e)
     {
-
         RemotePost rp = new RemotePost();
-        rp.Url = "http://dev.cmoney.tw/cm-service/CMoneyService.asmx/GetSubscriptionName";
-        rp.Add("memberPk", "7367");
-        rp.Get();
-        
+        rp.Url = "http://dev.cmoney.tw/UsefulTool/Demo/RemotePost/catch-post.aspx";
+        rp.Add("DateTime", DateTime.Now.ToString(CultureInfo.InvariantCulture));
+        rp.Add("Content", "Hello world");
+        var s = rp.GetResponseGet();
+        TextBox1.Text = s;
+
     }
+
 }
