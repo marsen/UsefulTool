@@ -5,24 +5,60 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using System.Data.SQLite;
+using System.Data;
 
 public partial class Demo_DataAccess_default : System.Web.UI.Page
 {
     //如果無法連接，請檢查DemoDataBase.mdf是否被其它程序鎖住，通常是sqlserver.exe;可以用unlocker來解鎖。
-    protected string cnString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\DemoDataBase.mdf;Database=DemoDataBase;Integrated Security=True;User Instance=True";
+    //protected string cnString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\Users\user1\Documents\GitHub\UsefulTool\Web\App_Data\DemoDataBase.mdf;Database=DemoDataBase2;Integrated Security=True;User Instance=True";
+    //SQLite Connection String
+    protected string cnString =
+        @"Data Source=C:\Users\user1\Documents\GitHub\UsefulTool\Web\App_Data\northwindEF.db;Version=3;";
+
+
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        //var sqlite_conn =
+        //    new SQLiteConnection(
+        //        @"Data Source=C:\Users\user1\Documents\GitHub\UsefulTool\Web\App_Data\northwindEF.db;Version=3;");
         if (!IsPostBack)
         {
+            /*
+            DataTable result = new DataTable();
+
+            try
+            {
+                sqlite_conn.Open();
+                var cm = new SQLiteCommand("select * from Employees", sqlite_conn);
+                result.Load(cm.ExecuteReader());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (sqlite_conn != null && sqlite_conn.State != ConnectionState.Closed)
+                {
+                    sqlite_conn.Close();
+                }
+            }*/
+            //gvDataTableForSQL.DataSource = result;
+            //gvDataTableForSQL.DataBind();  
+            var da = new DataAccess(new SQLiteConnection("cnString"));
             gvDataTableForSQL.DataSource = DataAccess.GetDataTableForSQL(cnString, "select * from Employees");
-            gvDataTableForSQL.DataBind();
+            gvDataTableForSQL.DataBind(); 
             ddlTitle.DataValueField = "Title";
             ddlTitle.DataTextField = "Title";
             ddlTitle.DataSource = DataAccess.GetDataTableForSQL(cnString, @"SELECT DISTINCT Title  FROM Employees");
             ddlTitle.DataBind();
+             
         }
     }
+
+
     protected void btnSingleValueForSQL_Click(object sender, EventArgs e)
     {
         string Name = this.tbName.Text;

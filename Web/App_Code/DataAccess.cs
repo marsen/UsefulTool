@@ -1,20 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Data.SqlClient;
 using System.Data;
-
+using System.Data.Common;
+using System.Data.SqlClient;
+using System.Data.SQLite;
 /// <summary>
-/// DataAccess 的摘要描述
+/// DataAccess 的摘要描述 TODO
 /// </summary>
 public class DataAccess
 {
-    public DataAccess()
+    private static DbConnection Connection { get ; set; }
+    private static DbCommand Command { get; set; }
+    private static DbParameter Parameter { get; set; }
+    public DataAccess(SqlConnection connection)
     {
-        //
-        // TODO: 在此加入建構函式的程式碼
-        //
+        Connection = connection;
+        Command = new SqlCommand();
+        Parameter = new SqlParameter();
+    }
+
+    public DataAccess(SQLiteConnection connection)
+    {
+        Connection = connection;
+        Command = new SQLiteCommand();
+        Parameter = new SQLiteParameter();
     }
 
     #region DB Data Access
@@ -62,15 +70,17 @@ public class DataAccess
     /// <returns>查詢結果</returns>
     public static string GetSingleValueForSQL(string cnString, string sqlString, SqlParameter parameter)
     {
-        SqlConnection conn = null;
+        var conn = Connection;
         string result = "";
 
         try
         {
-            conn = new SqlConnection(cnString);
+            conn = Connection;
             conn.Open();
 
-            var cm = new SqlCommand(sqlString, conn);
+            var cm = Command;
+            cm.Connection = conn;
+            cm.CommandText = sqlString;
             cm.Parameters.Clear();
             cm.Parameters.Add(parameter);
             cm.CommandTimeout = 180;
@@ -264,15 +274,18 @@ public class DataAccess
     /// <returns>查詢結果</returns>
     public static System.Data.DataTable GetDataTableForSQL(string cnString, string sqlString, string tableName)
     {
-        SqlConnection conn = null;
+        DbConnection conn = null;
         DataTable result = new DataTable();
 
         try
         {
-            conn = new SqlConnection(cnString);
+            conn = Connection;
+            conn.ConnectionString = cnString;
             conn.Open();
 
-            var cm = new SqlCommand(sqlString, conn);
+            var cm = Command;
+            cm.Connection = conn;
+            cm.CommandText = sqlString;                
             result.Load(cm.ExecuteReader());
         }
         catch (Exception ex)
@@ -336,15 +349,17 @@ public class DataAccess
     /// <returns>查詢結果</returns>
     public static System.Data.DataTable GetDataTableForSQL(string cnString, string sqlString, SqlParameter parameter)
     {
-        SqlConnection conn = null;
+        DbConnection conn = null;
         DataTable result = new DataTable();
 
         try
         {
-            conn = new SqlConnection(cnString);
+            conn = Connection;
             conn.Open();
 
-            var cm = new SqlCommand(sqlString, conn);
+            var cm = Command;
+            Command.Connection = conn;
+            Command.CommandText = sqlString;
             cm.Parameters.Add(parameter);
             result.Load(cm.ExecuteReader());
         }

@@ -9,8 +9,10 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:Button ID="btnXMLToObj" runat="server" Text="XML to Object" 
-            onclick="btnXMLToObj_Click" />
+        <asp:Button ID="btnXMLToObj" runat="server" Text="XML to Object 1" 
+            onclick="btnXMLToObj_Click" /><br />
+        <asp:Button ID="btnXMLToObj2" runat="server" Text="XML to Object 2" onclick="btnXMLToObj2_Click" 
+            />
     </div>
     <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
     </form>
