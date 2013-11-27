@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Data.SqlClient;
+
 using System.Data.SQLite;
-using System.Data;
+using Util.Data;
 
 public partial class Demo_DataAccess_default : System.Web.UI.Page
 {
@@ -47,12 +42,12 @@ public partial class Demo_DataAccess_default : System.Web.UI.Page
             }*/
             //gvDataTableForSQL.DataSource = result;
             //gvDataTableForSQL.DataBind();  
-            var da = new DataAccess(new SQLiteConnection("cnString"));
-            gvDataTableForSQL.DataSource = DataAccess.GetDataTableForSQL(cnString, "select * from Employees");
+            
+            gvDataTableForSQL.DataSource = SQLiteDataAccess.GetDataTableForSQL(cnString, "select * from Employees");
             gvDataTableForSQL.DataBind(); 
             ddlTitle.DataValueField = "Title";
             ddlTitle.DataTextField = "Title";
-            ddlTitle.DataSource = DataAccess.GetDataTableForSQL(cnString, @"SELECT DISTINCT Title  FROM Employees");
+            ddlTitle.DataSource = SQLiteDataAccess.GetDataTableForSQL(cnString, @"SELECT DISTINCT Title  FROM Employees");
             ddlTitle.DataBind();
              
         }
@@ -63,15 +58,15 @@ public partial class Demo_DataAccess_default : System.Web.UI.Page
     {
         string Name = this.tbName.Text;
         string sqlString = @"select Title from Employees where LastName like @Name or FirstName like @Name";
-        SqlParameter parameter = new SqlParameter("@Name",Name) ;
-        this.Label1.Text = DataAccess.GetSingleValueForSQL(cnString, sqlString, parameter);
+        SQLiteParameter parameter = new SQLiteParameter("@Name",Name) ;
+        this.Label1.Text = SQLiteDataAccess.GetSingleValueForSQL(cnString, sqlString, parameter);
     }
     protected void btnDataTableForSQL_Click(object sender, EventArgs e)
     {
         string Title = this.ddlTitle.SelectedValue;
         string sqlString = @"select  FirstName, LastName , Title from Employees where Title = @Title";
-        SqlParameter parameter = new SqlParameter("@Title", Title);
-        this.gvResult.DataSource = DataAccess.GetDataTableForSQL(cnString, sqlString, parameter);
+        SQLiteParameter parameter = new SQLiteParameter("@Title", Title);
+        this.gvResult.DataSource = SQLiteDataAccess.GetDataTableForSQL(cnString, sqlString, parameter);
         this.gvResult.DataBind();
     }
 }
