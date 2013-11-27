@@ -13,6 +13,8 @@
             onclick="btnXMLToObj_Click" /><br />
         <asp:Button ID="btnXMLToObj2" runat="server" Text="XML to Object 2" onclick="btnXMLToObj2_Click" 
             />
+        <br />
+        <asp:Button ID="Button1" runat="server" Text="Button" onclick="Button1_Click" />
     </div>
     <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
     </form>

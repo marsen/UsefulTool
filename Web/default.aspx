@@ -15,6 +15,7 @@
         <li>DataAccess - <a href="Demo/DataAccess/default.aspx">LINK</a></li>
         <li>Encryption and Decryption - <a href="Demo/Security/default.aspx">LINK</a></li>
         <li>AjaxSample- <a href="javascript:alert('你還沒作');">LINK</a></li>
+        <li>XML Serailize- <a href="javascript:alert('你還沒作');">LINK</a></li>
     </ol>
     </div>
     </form>
