@@ -10,3 +10,5 @@ C:\Users\user1\Documents\GitHub\UsefulTool\AP\obj\x86\Debug\UsefulToolAP.Propert
 C:\Users\user1\Documents\GitHub\UsefulTool\AP\obj\x86\Debug\UsefulToolAP.csproj.GenerateResource.Cache
 C:\Users\user1\Documents\GitHub\UsefulTool\AP\obj\x86\Debug\UsefulToolAP.exe
 C:\Users\user1\Documents\GitHub\UsefulTool\AP\obj\x86\Debug\UsefulToolAP.pdb
+C:\Users\Marsen\Documents\GitHub\UsefulTool\AP\obj\x86\Debug\UsefulToolAP.exe
+C:\Users\Marsen\Documents\GitHub\UsefulTool\AP\obj\x86\Debug\UsefulToolAP.pdb
