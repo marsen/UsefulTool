@@ -9,12 +9,11 @@ public partial class Demo_DataAccess_default : System.Web.UI.Page
     //protected string cnString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\Users\user1\Documents\GitHub\UsefulTool\Web\App_Data\DemoDataBase.mdf;Database=DemoDataBase2;Integrated Security=True;User Instance=True";
     //SQLite Connection String
     protected string cnString =
-        @"Data Source=C:\Users\user1\Documents\GitHub\UsefulTool\Web\App_Data\northwindEF.db;Version=3;";
-
-
+        @"Data Source=C:\Users\Marsen\Documents\GitHub\UsefulTool\Web\App_Data\northwindEF.db;Version=3;";
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        cnString = String.Format(@"Data Source={0}\App_Data\northwindEF.db;Version=3;", Server.MapPath("~"));
         //var sqlite_conn =
         //    new SQLiteConnection(
         //        @"Data Source=C:\Users\user1\Documents\GitHub\UsefulTool\Web\App_Data\northwindEF.db;Version=3;");

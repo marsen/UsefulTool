@@ -346,6 +346,7 @@ namespace Util.Data
 
             try
             {
+                conn = new SQLiteConnection(cnString);
                 conn.Open();
 
                 var cm = new SQLiteCommand(cnString, conn);

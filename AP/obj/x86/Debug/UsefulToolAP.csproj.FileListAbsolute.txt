@@ -12,3 +12,8 @@ C:\Users\user1\Documents\GitHub\UsefulTool\AP\obj\x86\Debug\UsefulToolAP.exe
 C:\Users\user1\Documents\GitHub\UsefulTool\AP\obj\x86\Debug\UsefulToolAP.pdb
 C:\Users\Marsen\Documents\GitHub\UsefulTool\AP\obj\x86\Debug\UsefulToolAP.exe
 C:\Users\Marsen\Documents\GitHub\UsefulTool\AP\obj\x86\Debug\UsefulToolAP.pdb
+C:\Users\Marsen\Documents\GitHub\UsefulTool\AP\bin\Debug\UsefulToolAP.exe
+C:\Users\Marsen\Documents\GitHub\UsefulTool\AP\bin\Debug\UsefulToolAP.pdb
+C:\Users\Marsen\Documents\GitHub\UsefulTool\AP\obj\x86\Debug\UsefulToolAP.Properties.Resources.resources
+C:\Users\Marsen\Documents\GitHub\UsefulTool\AP\obj\x86\Debug\UsefulToolAP.csprojResolveAssemblyReference.cache
+C:\Users\Marsen\Documents\GitHub\UsefulTool\AP\obj\x86\Debug\UsefulToolAP.csproj.GenerateResource.Cache
