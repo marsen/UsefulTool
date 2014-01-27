@@ -18,6 +18,11 @@ namespace UsefulToolAP
             InitializeComponent();
             var dt = new GetDirDataTable(@"C:\CMProj\WEB\web_0.2\app").OutputTable;            
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
  }
     /// <summary>
     /// 用遞迴存取指定目錄下所有檔案結構，並輸出成datatable
