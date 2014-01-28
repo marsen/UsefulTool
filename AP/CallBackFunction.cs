@@ -94,7 +94,7 @@ namespace UsefulToolAP
             
             var oFun = new FunOfFish(ScalesOff);//new 出一個可傳遞的function
             dataGridView1.DataSource = SelectData(oFun);
-            label4.Text = ((DateTime.Now.Ticks - tick) / 10000000).ToString(CultureInfo.InvariantCulture);           
+            label4.Text = (DateTime.Now.Ticks - tick).ToString(CultureInfo.InvariantCulture);           
         }
 
         private List<Fish> SelectData(FunOfFish oFun)
@@ -133,7 +133,7 @@ namespace UsefulToolAP
                 fish.Scales = false;
                 return fish;
             });
-            label4.Text = ((DateTime.Now.Ticks - tick) / 10000000).ToString(CultureInfo.InvariantCulture);
+            label4.Text = (DateTime.Now.Ticks - tick).ToString(CultureInfo.InvariantCulture);
         }        
 
         private void button5_Click(object sender, EventArgs e)
@@ -145,18 +145,16 @@ namespace UsefulToolAP
             FunOfFish f = fish => fish; //透過編譯器推測參數型別，因此，如果傳入的參數只有一個，我們可以省掉參數的型別宣告，以及那一對小括弧()
             dataGridView1.DataSource = SelectData(f); 
 
-            label4.Text = ((DateTime.Now.Ticks - tick) / 10000000).ToString(CultureInfo.InvariantCulture);
+            label4.Text = (DateTime.Now.Ticks - tick).ToString(CultureInfo.InvariantCulture);
         }
-        #endregion
-
         private void button6_Click(object sender, EventArgs e)
         {
             long tick = DateTime.Now.Ticks;
             //2.0開始 用Func/Action來宣告泛型委派
-            Func<Fish,Fish> f = ScalesOff;
+            Func<Fish, Fish> f = ScalesOff;
             dataGridView1.DataSource = GenericSelectData(f);
 
-            label4.Text = ((DateTime.Now.Ticks - tick) / 10000000).ToString(CultureInfo.InvariantCulture);
+            label4.Text = (DateTime.Now.Ticks - tick).ToString(CultureInfo.InvariantCulture);
         }
 
         private List<Fish> GenericSelectData(Func<Fish, Fish> oFun)
@@ -172,5 +170,9 @@ namespace UsefulToolAP
             }
             return result;
         }
+
+        #endregion
+
+
     }
 }

@@ -18,3 +18,6 @@ C:\Users\Marsen\Documents\GitHub\UsefulTool\AP\obj\x86\Debug\UsefulToolAP.Proper
 C:\Users\Marsen\Documents\GitHub\UsefulTool\AP\obj\x86\Debug\UsefulToolAP.csproj.GenerateResource.Cache
 C:\Users\Marsen\Documents\GitHub\UsefulTool\AP\obj\x86\Debug\UsefulToolAP.CallBackFunction.resources
 C:\Users\Marsen\Documents\GitHub\UsefulTool\AP\obj\x86\Debug\UsefulToolAP.Form1.resources
+C:\Users\user1\Documents\GitHub\UsefulTool\AP\obj\x86\Debug\UsefulToolAP.csprojResolveAssemblyReference.cache
+C:\Users\user1\Documents\GitHub\UsefulTool\AP\obj\x86\Debug\UsefulToolAP.CallBackFunction.resources
+C:\Users\user1\Documents\GitHub\UsefulTool\AP\obj\x86\Debug\UsefulToolAP.Form1.resources
