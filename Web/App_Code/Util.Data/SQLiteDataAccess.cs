@@ -8,9 +8,7 @@ namespace Util.Data
     /// DataAccess 的摘要描述 TODO
     /// </summary>
     public class SQLiteDataAccess
-    {
-       
-
+    {      
         #region DB Data Access
 
         /// <summary>

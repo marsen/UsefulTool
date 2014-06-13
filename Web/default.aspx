@@ -17,6 +17,7 @@
         <li>Uri & Server Path - <a href="Demo/UriServerPath/default.aspx?pramas=variable">LINK</a></li>
         <li>AjaxSample- <a href="javascript:alert('你還沒作');">LINK</a></li>
         <li>XML Serailize- <a href="javascript:alert('你還沒作');">LINK</a></li>
+        <li>Bulk Insert <a href="Demo/BulkInsert/default.aspx">LINK</a></li>
     </ol>
     </div>
     </form>

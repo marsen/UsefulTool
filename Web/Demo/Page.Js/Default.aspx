@@ -13,5 +13,10 @@
     </div>
     </form>
 </body>
+<link href="css/Pager.css" rel="stylesheet" />
 <script src="Pager.js"></script>
+<script>    
+    //example
+    document.getElementById("pager").Pager({ count: 48, range: 2, page: 3 });
+</script>
 </html>

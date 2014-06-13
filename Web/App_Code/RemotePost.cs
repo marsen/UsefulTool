@@ -56,7 +56,10 @@ public class RemotePost
             HttpContext.Current.Response.Write("</body></html>");
             HttpContext.Current.Response.End();
         }
-        
+        /// <summary>
+        /// 取得Response
+        /// </summary>
+        /// <returns></returns>
         public string GetResponseGet()
         {
             //網頁內容
@@ -94,7 +97,7 @@ public class RemotePost
                 result = myStreamReader.ReadToEnd();
 
             }
-            catch
+            catch (Exception ex)
             {
                 result = "GET ERROR";
             }

@@ -1,0 +1,12 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+*{outline:0; position:relative;}
+html{position:static}
+a{text-decoration:none;}
+.page{ margin: 90px 0 0 0; padding-top: 20px; text-align:center; border-top: 4px solid #EEEEEE;}
+.page a{ display:inline-block; background:#ddd; line-height:32px; padding:0 1em; color:#aaa; font-size:13px; transition:all .3s ease;}
+.page a:hover{ background:#333;}
+a.pageNow, a.pageNow:hover{ background:#245dc1; color:#fff;}
+a.first, a.last{ background:none; line-height:normal; color:#245dc1;}
+a.first:hover, a.last:hover{ background:none; text-decoration:underline;}

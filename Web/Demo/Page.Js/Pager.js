@@ -1,12 +1,11 @@
 ﻿HTMLElement.prototype.Pager = Pager;
-//var p = new Pager({ count: 48, range: 2, page: 3 });
-document.getElementById("pager").Pager({ count: 48, range: 2, page: 3 });
-//test area 
-
+//todo 最小化
 function Pager(obj) {
     var template = {},
+        dom = {},
+        parser = new DOMParser(),
         me = this;
-    obj = obj || { count: 0, range: 2, page: 3 };
+    obj = obj || { count: 0, range: 2, page: 1 };
     (function init() {
         getTemplate(pagerLayout);
     }());
@@ -18,7 +17,7 @@ function Pager(obj) {
                 if (xhr.readyState == 4) {
                     var resp = xhr.responseText;
                     // resp now has the text and you can process it.
-                    var dom = new DOMParser().parseFromString(resp, "text/xml");
+                    dom = parser.parseFromString(resp, "text/xml");
                     template.firstPage = dom.getElementById("page.first.html").innerHTML,
                     template.previousPage = dom.getElementById("page.previous.html").innerHTML,
                     template.otherPage = dom.getElementById("page.html").innerHTML,
@@ -42,20 +41,20 @@ function Pager(obj) {
     function pagerLayout() {
         var html = '',
             temp = '',
-            firstPage = '',//document.getElementById("page.first.html").innerHTML,
-            previousPage = '',//document.getElementById("page.previous.html").innerHTML,
-            otherPage = '',//document.getElementById("page.html").innerHTML,
-            currentPage = '',//document.getElementById("page.current.html").innerHTML,
-            nextPage = '',//document.getElementById("page.next.html").innerHTML,
-            lastPage = '',//document.getElementById("page.last.html").innerHTML,
             range = obj.range,
             count = obj.count,
             page = obj.page;
 
         //
         if (page > 1) {
-            temp += template.firstPage;
-            temp += template.previousPage;
+            //temp += template.firstPage;
+            var first = dom.getElementById("page.first.html");
+
+            var previousPage = parser.parseFromString(template.previousPage, "text/xml");
+            me.insertBefore(first);
+
+            //me.insertBefore(previousPage);
+            //temp += template.previousPage;
         }
         var l = (page + range) + 1, i = ((page - range));
         for (i ; i < l; i++) {
@@ -79,9 +78,12 @@ function Pager(obj) {
             next: page + 1,
             last: count
         };
-        html = compile(temp, item);
+        //html = compile(temp, item);
         //document.getElementById("pager").innerHTML = html;
-        me.innerHTML = html;
+        
+        //todo 套版防重複
+        //me.innerHTML = html;
+        me.className += "page";
     }
 }
 
